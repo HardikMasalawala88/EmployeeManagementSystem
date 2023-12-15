@@ -16,9 +16,11 @@ namespace Data.FormModels
         public string Address { get; set; }
 
         [Required]
+        [DataType(DataType.Date)]
         public DateTime DateofJoin { get; set; }
 
         [Required]
+        [DataType(DataType.Date)]
         public DateTime DateofBirth { get; set; }
 
         [Required]
@@ -36,5 +38,7 @@ namespace Data.FormModels
         [Display(Name = "Confirm Password")]
         [Compare("Password", ErrorMessage = "Password and confirmation password not match.")]
         public string ConfirmPassword { get; set; }
+
+        public bool IsActive { get; set; }
     }
 }
