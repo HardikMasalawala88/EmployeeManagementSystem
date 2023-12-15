@@ -38,11 +38,11 @@ namespace EMS.Controllers
                 Employee user = _userManager.FindByIdAsync(uid).Result;
                 if (user != null)
                 {
-                    RegisterViewModel model = new RegisterViewModel()
+                    EmployeeVM model = new EmployeeVM()
                     {
                         Firstname = user.Firstname,
                         Lastname = user.Lastname,
-                        Address = user.address,
+                        Address = user.Address,
                         DateofBirth = user.DateofBirth,
                         DateofJoin = user.DateofJoin,
                         AadharNumber = user.AadharNumber,
@@ -57,7 +57,7 @@ namespace EMS.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Edit(RegisterViewModel model)
+        public async Task<IActionResult> Edit(EmployeeVM model)
         {
             var uid = _userManager.GetUserId(HttpContext.User);
             Employee user = _userManager.FindByIdAsync(uid).Result;
@@ -70,7 +70,7 @@ namespace EMS.Controllers
             {
                 user.Firstname = model.Firstname;
                 user.Lastname = model.Lastname;
-                user.address = model.Address;
+                user.Address = model.Address;
                 user.DateofBirth = model.DateofBirth;
                 user.DateofJoin = model.DateofJoin;
                 user.AadharNumber = model.AadharNumber;
@@ -106,11 +106,11 @@ namespace EMS.Controllers
                 Employee user = _userManager.FindByIdAsync(uid).Result;
                 if (user != null)
                 {
-                    RegisterViewModel model = new RegisterViewModel()
+                    EmployeeVM model = new EmployeeVM()
                     {
                         Firstname = user.Firstname,
                         Lastname = user.Lastname,
-                        Address = user.address,
+                        Address = user.Address,
                         DateofBirth = user.DateofBirth,
                         DateofJoin = user.DateofJoin,
                         AadharNumber = user.AadharNumber,

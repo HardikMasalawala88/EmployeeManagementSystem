@@ -24,7 +24,7 @@ namespace EMS.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Register(RegisterViewModel model)
+        public async Task<IActionResult> Register(EmployeeVM model)
         {
             if (ModelState.IsValid)
             {
@@ -32,7 +32,7 @@ namespace EMS.Controllers
                 {
                     Firstname = model.Firstname,
                     Lastname = model.Lastname,
-                    address = model.Address,
+                    Address = model.Address,
                     DateofBirth = model.DateofBirth,
                     DateofJoin = model.DateofJoin,
                     AadharNumber = model.AadharNumber,

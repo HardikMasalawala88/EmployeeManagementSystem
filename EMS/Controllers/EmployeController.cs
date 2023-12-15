@@ -35,7 +35,7 @@ namespace EMS.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(RegisterViewModel model)
+        public async Task<IActionResult> Create(EmployeeVM model)
         {
             if (model is not null)
             {
@@ -43,7 +43,7 @@ namespace EMS.Controllers
                 {
                     Firstname = model.Firstname,
                     Lastname = model.Lastname,
-                    address = model.Address,
+                    Address = model.Address,
                     DateofBirth = model.DateofBirth,
                     DateofJoin = model.DateofJoin,
                     AadharNumber = model.AadharNumber,
@@ -97,11 +97,21 @@ namespace EMS.Controllers
         [HttpGet]
         public async Task<IActionResult> EmployeList()
         {
-            List<RegisterViewModel> employees = new List<RegisterViewModel>();
+            List<EmployeeVM> employees = new List<EmployeeVM>();
             IList<Employee> items = await _userManager.GetUsersInRoleAsync("Employee");
             foreach (Employee i in items)
             {
-                employees.Add(new RegisterViewModel { Id = i.Id, Firstname = i.Firstname, Lastname = i.Lastname, Email = i.Email, Address = i.address, AadharNumber = i.AadharNumber, DateofBirth = i.DateofBirth, DateofJoin = i.DateofJoin });
+                employees.Add(new EmployeeVM
+                {
+                    Id = i.Id,
+                    Firstname = i.Firstname,
+                    Lastname = i.Lastname,
+                    Email = i.Email,
+                    Address = i.Address,
+                    AadharNumber = i.AadharNumber,
+                    DateofBirth = i.DateofBirth,
+                    DateofJoin = i.DateofJoin
+                });
             }
 
             return View(employees);
@@ -115,12 +125,12 @@ namespace EMS.Controllers
                 Employee user = await _userManager.FindByIdAsync(id);
                 if (user is not null)
                 {
-                    RegisterViewModel model = new RegisterViewModel()
+                    EmployeeVM model = new EmployeeVM()
                     {
                         Firstname = user.Firstname,
                         Lastname = user.Lastname,
                         Email = user.Email,
-                        Address = user.address,
+                        Address = user.Address,
                         DateofBirth = user.DateofBirth,
                         DateofJoin = user.DateofJoin,
                         AadharNumber = user.AadharNumber,
@@ -134,14 +144,14 @@ namespace EMS.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> EditEmployee(RegisterViewModel employee)
+        public async Task<IActionResult> EditEmployee(EmployeeVM employee)
         {
             Employee user = await _userManager.FindByIdAsync(employee.Id);
             user.Firstname = employee.Firstname;
             user.Lastname = employee.Lastname;
             user.Email = employee.Email;
             user.UserName = employee.Email;
-            user.address = employee.Address;
+            user.Address = employee.Address;
             user.DateofBirth = employee.DateofBirth;
             user.DateofJoin = employee.DateofJoin;
             user.AadharNumber = employee.AadharNumber;

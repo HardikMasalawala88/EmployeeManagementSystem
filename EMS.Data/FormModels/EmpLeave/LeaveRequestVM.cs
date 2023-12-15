@@ -34,7 +34,7 @@ namespace EMS.Data.FormModels.EmpLeave
         [Display(Name = "Approval State")]
         public bool? Approved { get; set; }
 
-        public RegisterViewModel? ApprovedBy { get; set; }
+        public EmployeeVM? ApprovedBy { get; set; }
 
         [Display(Name = "Approver Name")]
         public string? ApprovedById { get; set; } = string.Empty;

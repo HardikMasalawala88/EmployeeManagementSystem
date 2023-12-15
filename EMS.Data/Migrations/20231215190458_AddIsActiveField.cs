@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
@@ -8,12 +9,12 @@ namespace EMS.Data.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AddColumn<bool>(
-                name: "IsActive",
-                table: "RegisterViewModel",
-                type: "bit",
-                nullable: false,
-                defaultValue: false);
+            migrationBuilder.DropForeignKey(
+                name: "FK_LeaveRequests_RegisterViewModel_ApprovedById",
+                table: "LeaveRequests");
+
+            migrationBuilder.DropTable(
+                name: "RegisterViewModel");
 
             migrationBuilder.AddColumn<bool>(
                 name: "IsActive",
@@ -54,21 +55,28 @@ namespace EMS.Data.Migrations
                 keyColumn: "Id",
                 keyValue: "224047d7-9c97-4768-a0f6-50e7eec9fe29",
                 columns: new[] { "ConcurrencyStamp", "IsActive", "PasswordHash", "SecurityStamp" },
-                values: new object[] { "47d3d7f2-8022-4856-9714-e109394c51ee", true, "AQAAAAEAACcQAAAAELy+PD9NlN/mGUyf1EdgQS4zlDWhJA+lbGYwmL9lZlvTENOuv8Fw1FoP2fyPC1lrvA==", "dbb10e7a-352e-4fe2-bc1f-4efdfb1713a2" });
+                values: new object[] { "f005a601-9810-44d8-adba-961e66fd9f4e", true, "AQAAAAEAACcQAAAAEByoMxcG2NiHABHXB1i7m2sfvzD166s96Xckg4fZ/L1iqKhyRhXY3qh8FXVyWSSMsw==", "b532f70d-266b-45f5-8008-bd6bb7ea18dc" });
 
             migrationBuilder.UpdateData(
                 table: "AspNetUsers",
                 keyColumn: "Id",
                 keyValue: "d8545447-30d8-4910-8931-b5c22e47f8ce",
                 columns: new[] { "ConcurrencyStamp", "IsActive", "PasswordHash", "SecurityStamp" },
-                values: new object[] { "5e28c27a-e827-4774-a06d-1d563ddbb4e6", true, "AQAAAAEAACcQAAAAEBIVAdelUGoreKatmoRmLQM3p4aij4LUySI6xz6U0e3ZwDWGT1b0IkRFVN7n2q7pPA==", "9ef1f074-a708-412a-9c74-b9fe9b64dcba" });
+                values: new object[] { "d76a5708-0989-49e4-a5c2-9abc4348f2c3", true, "AQAAAAEAACcQAAAAENhvoWdBgMaLkAxdYzDvvyD0fYjK8RfxEvOk01HOA5gEuzKW5FEnbbNH49jycSLB4w==", "be60af20-682b-411e-9ba1-da6220c0ab01" });
+
+            migrationBuilder.AddForeignKey(
+                name: "FK_LeaveRequests_AspNetUsers_ApprovedById",
+                table: "LeaveRequests",
+                column: "ApprovedById",
+                principalTable: "AspNetUsers",
+                principalColumn: "Id");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropColumn(
-                name: "IsActive",
-                table: "RegisterViewModel");
+            migrationBuilder.DropForeignKey(
+                name: "FK_LeaveRequests_AspNetUsers_ApprovedById",
+                table: "LeaveRequests");
 
             migrationBuilder.DropColumn(
                 name: "IsActive",
@@ -90,6 +98,26 @@ namespace EMS.Data.Migrations
                 name: "IsActive",
                 table: "AspNetUsers");
 
+            migrationBuilder.CreateTable(
+                name: "RegisterViewModel",
+                columns: table => new
+                {
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    AadharNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Address = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ConfirmPassword = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    DateofBirth = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    DateofJoin = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Firstname = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Lastname = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Password = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_RegisterViewModel", x => x.Id);
+                });
+
             migrationBuilder.UpdateData(
                 table: "AspNetUsers",
                 keyColumn: "Id",
@@ -103,6 +131,13 @@ namespace EMS.Data.Migrations
                 keyValue: "d8545447-30d8-4910-8931-b5c22e47f8ce",
                 columns: new[] { "ConcurrencyStamp", "PasswordHash", "SecurityStamp" },
                 values: new object[] { "510ae883-2628-4777-af5e-b9d3de917a8e", "AQAAAAEAACcQAAAAEBw1tCrTq0jevLbOfvAqde/SKOngbFxrFCKE2C1xBqu/wmEl+zoo56sgFmL4Eh0sQw==", "3bf0997d-8fb3-41d9-bd82-a26a1db4c0fe" });
+
+            migrationBuilder.AddForeignKey(
+                name: "FK_LeaveRequests_RegisterViewModel_ApprovedById",
+                table: "LeaveRequests",
+                column: "ApprovedById",
+                principalTable: "RegisterViewModel",
+                principalColumn: "Id");
         }
     }
 }

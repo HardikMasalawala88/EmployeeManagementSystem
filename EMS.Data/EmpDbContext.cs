@@ -20,7 +20,7 @@ namespace EMS.Data
         public DbSet<LeaveType> LeaveTypes { get; set; }
         public DbSet<LeaveAllocation> LeaveAllocations { get; set; }
         public DbSet<LeaveRequest> LeaveRequests { get; set; }
-        public DbSet<EmpSalary> EmpSalaries { get; set; }
+        public DbSet<EmpSalary> Salaries { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -63,7 +63,7 @@ namespace EMS.Data
                    PasswordHash = hasher.HashPassword(null, "Test@123"),
                    Firstname = "hardikadmin",
                    Lastname = "masalawala",
-                   address = "surat",
+                   Address = "surat",
                },
                 new Employee()
                 {
@@ -76,7 +76,7 @@ namespace EMS.Data
                     PasswordHash = hasher.HashPassword(null, "Test@123"),
                     Firstname = "hardikSadmin",
                     Lastname = "masalawala",
-                    address = "surat",
+                    Address = "surat",
                 }
                ); ;
 

@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EMS.Data.Migrations
 {
     [DbContext(typeof(EmpDbContext))]
-    [Migration("20231215184850_AddIsActiveField")]
+    [Migration("20231215190458_AddIsActiveField")]
     partial class AddIsActiveField
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -23,53 +23,6 @@ namespace EMS.Data.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
-
-            modelBuilder.Entity("Data.FormModels.RegisterViewModel", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("AadharNumber")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Address")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ConfirmPassword")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("DateofBirth")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("DateofJoin")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Firstname")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Lastname")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("RegisterViewModel");
-                });
 
             modelBuilder.Entity("EMS.Data.Entities.Emp.EmpSalary", b =>
                 {
@@ -606,14 +559,14 @@ namespace EMS.Data.Migrations
                         {
                             Id = "224047d7-9c97-4768-a0f6-50e7eec9fe29",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "47d3d7f2-8022-4856-9714-e109394c51ee",
+                            ConcurrencyStamp = "f005a601-9810-44d8-adba-961e66fd9f4e",
                             Email = "admin@123.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedUserName = "ADMIN@123.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAELy+PD9NlN/mGUyf1EdgQS4zlDWhJA+lbGYwmL9lZlvTENOuv8Fw1FoP2fyPC1lrvA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEByoMxcG2NiHABHXB1i7m2sfvzD166s96Xckg4fZ/L1iqKhyRhXY3qh8FXVyWSSMsw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "dbb10e7a-352e-4fe2-bc1f-4efdfb1713a2",
+                            SecurityStamp = "b532f70d-266b-45f5-8008-bd6bb7ea18dc",
                             TwoFactorEnabled = false,
                             UserName = "admin@123.com",
                             AadharNumber = "85697 13358 854",
@@ -628,14 +581,14 @@ namespace EMS.Data.Migrations
                         {
                             Id = "d8545447-30d8-4910-8931-b5c22e47f8ce",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "5e28c27a-e827-4774-a06d-1d563ddbb4e6",
+                            ConcurrencyStamp = "d76a5708-0989-49e4-a5c2-9abc4348f2c3",
                             Email = "superadmin@123.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedUserName = "SUPERADMIN@123.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEBIVAdelUGoreKatmoRmLQM3p4aij4LUySI6xz6U0e3ZwDWGT1b0IkRFVN7n2q7pPA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAENhvoWdBgMaLkAxdYzDvvyD0fYjK8RfxEvOk01HOA5gEuzKW5FEnbbNH49jycSLB4w==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "9ef1f074-a708-412a-9c74-b9fe9b64dcba",
+                            SecurityStamp = "be60af20-682b-411e-9ba1-da6220c0ab01",
                             TwoFactorEnabled = false,
                             UserName = "superadmin@123.com",
                             AadharNumber = "25214 9652 452",
@@ -682,7 +635,7 @@ namespace EMS.Data.Migrations
 
             modelBuilder.Entity("EMS.Data.Entities.Leaves.LeaveRequest", b =>
                 {
-                    b.HasOne("Data.FormModels.RegisterViewModel", "ApprovedBy")
+                    b.HasOne("EMS.Data.Entities.Emp.Employee", "ApprovedBy")
                         .WithMany()
                         .HasForeignKey("ApprovedById");
 

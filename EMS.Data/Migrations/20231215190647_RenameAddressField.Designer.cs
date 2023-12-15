@@ -4,6 +4,7 @@ using EMS.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EMS.Data.Migrations
 {
     [DbContext(typeof(EmpDbContext))]
-    partial class EmpDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231215190647_RenameAddressField")]
+    partial class RenameAddressField
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -111,7 +113,7 @@ namespace EMS.Data.Migrations
 
                     b.HasIndex("RequestingEmpId");
 
-                    b.ToTable("Salaries");
+                    b.ToTable("EmpSalaries");
                 });
 
             modelBuilder.Entity("EMS.Data.Entities.Leaves.LeaveAllocation", b =>
@@ -557,14 +559,14 @@ namespace EMS.Data.Migrations
                         {
                             Id = "224047d7-9c97-4768-a0f6-50e7eec9fe29",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "0fc3e9b8-c094-40d2-8951-10527afdfb5a",
+                            ConcurrencyStamp = "de5c723a-3a14-43e8-911d-dbf680079e0d",
                             Email = "admin@123.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedUserName = "ADMIN@123.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEKPYqaJeOxPonHzHzg1E5BGU1uoR2Ph0pKe/AnBCD5HcMDDNXYZqwybPP0DSJmg6rg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEMdILKTzAOh9wWQrHdYsvOJOQqIvZB01B1oNvcH0aRAWVJqSqkIE2FflZe4mx24IWg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "507ab1ae-a2fd-42bb-a847-3c86e00d0f73",
+                            SecurityStamp = "eab28153-ecf5-4b02-95c3-7017c2a7c48a",
                             TwoFactorEnabled = false,
                             UserName = "admin@123.com",
                             AadharNumber = "85697 13358 854",
@@ -579,14 +581,14 @@ namespace EMS.Data.Migrations
                         {
                             Id = "d8545447-30d8-4910-8931-b5c22e47f8ce",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "6c5bab40-ed58-424a-ad57-689e7a409e4b",
+                            ConcurrencyStamp = "f657ff9d-1149-4a45-9ad3-f103ede78d17",
                             Email = "superadmin@123.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedUserName = "SUPERADMIN@123.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAECsPAtC4LyTEqBdUvE7ArTCAuwI4vFI6YOFMbimmeT3LQEfu6BfyaMPMmjdjpQOK1Q==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEDSF2JZgzpHm18nAPEFpYmLHy75iwMDh+cxURMMrVV00v2LACVwyW7drQvNelDPB2Q==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "828b2ef6-1ab0-4c73-875f-bf604a02e3bf",
+                            SecurityStamp = "279d2efd-479e-45cd-a43e-706bbb34222d",
                             TwoFactorEnabled = false,
                             UserName = "superadmin@123.com",
                             AadharNumber = "25214 9652 452",

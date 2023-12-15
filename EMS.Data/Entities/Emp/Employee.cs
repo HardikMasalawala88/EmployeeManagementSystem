@@ -8,7 +8,7 @@ namespace EMS.Data.Entities.Emp
     {
         public string Firstname { get; set; } = string.Empty; 
         public string Lastname { get; set; } = string.Empty;
-        public string address { get; set; } = string.Empty;
+        public string Address { get; set; } = string.Empty;
         public DateTime DateofJoin { get; set; }
         public DateTime DateofBirth { get; set; }
         public string AadharNumber { get; set; } = string.Empty;

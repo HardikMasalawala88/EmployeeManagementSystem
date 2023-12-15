@@ -13,7 +13,7 @@ namespace EMS.Mapping
         {
             CreateMap<LeaveType, LeaveTypeVM>().ReverseMap();
             CreateMap<LeaveAllocation, LeaveAllocationVM>().ReverseMap();
-            CreateMap<Employee, RegisterViewModel>().ReverseMap();
+            CreateMap<Employee, EmployeeVM>().ReverseMap();
             CreateMap<LeaveAllocation, EditLeaveAllocationVM>().ReverseMap();
             CreateMap<LeaveRequest, LeaveRequestVM>().ReverseMap();
             CreateMap<EmpSalary, EmpSalaryVM>().ReverseMap();

@@ -2,7 +2,7 @@
 
 namespace Data.FormModels
 {
-    public class RegisterViewModel
+    public class EmployeeVM
     {
         public string? Id { get; set; }
 

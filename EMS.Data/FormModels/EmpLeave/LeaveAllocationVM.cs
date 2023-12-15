@@ -14,7 +14,7 @@ namespace EMS.Data.FormModels.EmpLeave
         public DateTime DateCreated { get; set; }
         public int Period { get; set; }
 
-        public RegisterViewModel? Employee { get; set; }
+        public EmployeeVM? Employee { get; set; }
         public string? EmployeeId { get; set; }
 
         public LeaveTypeVM? LeaveType { get; set; }
@@ -31,7 +31,7 @@ namespace EMS.Data.FormModels.EmpLeave
     {
         public int Id { get; set; }
 
-        public RegisterViewModel? Employee { get; set; }
+        public EmployeeVM? Employee { get; set; }
         public string EmployeeId { get; set; } = string.Empty;
 
         [Display(Name = "Number Of Days")]
@@ -43,7 +43,7 @@ namespace EMS.Data.FormModels.EmpLeave
 
     public class ViewAllocationsVM
     {
-        public RegisterViewModel? Employee { get; set; }
+        public EmployeeVM? Employee { get; set; }
         public string EmployeeId { get; set; } = string.Empty;
         public List<LeaveAllocationVM>? LeaveAllocations { get; set; }
     }

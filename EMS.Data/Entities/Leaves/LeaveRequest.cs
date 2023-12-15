@@ -22,7 +22,7 @@ namespace EMS.Data.Entities.Leaves
         public bool Cancelled { get; set; }
 
         [ForeignKey("ApprovedById")]
-        public RegisterViewModel? ApprovedBy { get; set; }
+        public Employee? ApprovedBy { get; set; }
         public string? ApprovedById { get; set; } = string.Empty;
     }
 }

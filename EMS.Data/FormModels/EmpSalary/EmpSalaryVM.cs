@@ -8,7 +8,7 @@ namespace EMS.Data.FormModels.EmpSalary
     {
         public int Id { get; set; }
 
-        public RegisterViewModel? RequestingEmployee { get; set; }
+        public EmployeeVM? RequestingEmployee { get; set; }
         [Display(Name = "Employee Name")]
         public string? RequestingEmpId { get; set; }
 
@@ -74,7 +74,7 @@ namespace EMS.Data.FormModels.EmpSalary
         public double ProfessionalTax { get; set; } = 0;
 
         [ForeignKey("CreatedbyId")]
-        public RegisterViewModel? Createdby { get; set; }
+        public EmployeeVM? Createdby { get; set; }
         public string? CreatedbyId { get; set; }
     }
 }

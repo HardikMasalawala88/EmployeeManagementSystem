@@ -29,13 +29,13 @@ namespace EMS.Controllers.Leave
         public async Task<ActionResult> ListEmployees()
         {
             var employees = await _userManager.GetUsersInRoleAsync("Employee");
-            var model = _mapper.Map<List<RegisterViewModel>>(employees);
+            var model = _mapper.Map<List<EmployeeVM>>(employees);
             return View(model);
         }
 
         public async Task<ActionResult> LeaveAllocationDetail(string id)
         {
-            var employee = _mapper.Map<RegisterViewModel>(await _userManager.FindByIdAsync(id));
+            var employee = _mapper.Map<EmployeeVM>(await _userManager.FindByIdAsync(id));
             int period = DateTime.Now.Year;
             var records = await _leaveAllocationService.FindAll(
                 expression: q => q.EmployeeId == id && q.Period == period, includes: q => q.Include(x => x.LeaveType));
